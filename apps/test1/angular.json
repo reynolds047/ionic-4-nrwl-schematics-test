@@ -2,11 +2,11 @@
   "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
   "version": 1,
   "defaultProject": "app",
-  "newProjectRoot": "",
+  "newProjectRoot": "projects",
   "projects": {
     "app": {
-      "root": "apps/app",
-      "sourceRoot": "apps/app/src",
+      "root": "",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -15,15 +15,15 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "progress": false,
-            "outputPath": "dist/apps/app",
-            "index": "apps/app/src/index.html",
-            "main": "apps/app/src/main.ts",
-            "polyfills": "apps/app/src/polyfills.ts",
-            "tsConfig": "apps/app/tsconfig.app.json",
+            "outputPath": "www",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "apps/app/src/assets",
+                "input": "src/assets",
                 "output": "assets"
               },
               {
@@ -34,10 +34,10 @@
             ],
             "styles": [
               {
-                "input": "apps/app/src/theme/variables.scss"
+                "input": "src/theme/variables.scss"
               },
               {
-                "input": "apps/app/src/global.scss"
+                "input": "src/global.scss"
               }
             ],
             "scripts": []
@@ -46,8 +46,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/app/src/environments/environment.ts",
-                  "with": "apps/app/src/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -82,21 +82,21 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "apps/app/src/test.ts",
-            "polyfills": "apps/app/src/polyfills.ts",
-            "tsConfig": "apps/app/tsconfig.spec.json",
-            "karmaConfig": "apps/app/karma.conf.js",
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
             "styles": [],
             "scripts": [],
             "assets": [
               {
                 "glob": "favicon.ico",
-                "input": "apps/app/src/",
+                "input": "src/",
                 "output": "/"
               },
               {
                 "glob": "**/*",
-                "input": "apps/app/src/assets",
+                "input": "src/assets",
                 "output": "/assets"
               }
             ]
@@ -106,8 +106,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/app/tsconfig.app.json",
-              "apps/app/tsconfig.spec.json"
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -141,20 +141,20 @@
       }
     },
     "app-e2e": {
-      "root": "apps/app-e2e",
+      "root": "e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "apps/app-e2e/protractor.conf.js",
+            "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "app:serve"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "apps/app-e2e/tsconfig.e2e.json",
+            "tsConfig": "e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -164,7 +164,7 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/schematics"
+    "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
